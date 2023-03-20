@@ -17,3 +17,6 @@ class ExTest:
     assertEquals(list, drop(list, 0))
     assertEquals(list, drop(list, -3))
 
+  @Test def testAppend() =
+    val tail = Cons(40, Cons(50, Nil()))
+    assertEquals(Cons(10, Cons(20, Cons(30, Cons(40, Cons(50, Nil()))))), append(list, tail))
