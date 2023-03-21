@@ -21,4 +21,6 @@ class ExTest:
     val tail = Cons(40, Cons(50, Nil()))
     assertEquals(Cons(10, Cons(20, Cons(30, Cons(40, Cons(50, Nil()))))), append(list, tail))
 
-
+  @Test def testEdgeCaseAppend() =
+    assertEquals(list, append(list, Nil()))
+    assertEquals(list, append(Nil(), list))
