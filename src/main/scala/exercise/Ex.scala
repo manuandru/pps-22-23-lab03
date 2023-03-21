@@ -12,5 +12,5 @@ object Ex extends App:
       case _ => l
 
     def append[A](left: List[A], right: List[A]): List[A] = left match
-      case Cons(h, Nil()) => Cons(h, right)
+      case Nil() => right
       case Cons(h, t) => Cons(h, append(t, right))
