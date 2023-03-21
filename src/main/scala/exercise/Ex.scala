@@ -7,8 +7,8 @@ object Ex extends App:
     case Nil()
 
   object List:
-    def drop[A](l: List[A], n: Int): List[A] = (l, n) match
-      case (Cons(_, t), i) if i > 0 => drop(t, i - 1)
+    def drop[A](l: List[A], n: Int): List[A] = l match
+      case Cons(_, t) if n > 0 => drop(t, n - 1)
       case _ => l
 
     def append[A](left: List[A], right: List[A]): List[A] = left match
