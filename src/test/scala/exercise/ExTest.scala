@@ -44,6 +44,10 @@ class ListTest:
     assertEquals(Some(25), max(Cons(10, Cons(25, Cons(20, Nil())))))
     assertEquals(None(), max(Nil()))
 
+  val lst = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+  @Test def testFoldLeft() =
+    assertEquals(-16, foldLeft(lst)(0)(_ - _))
+
 class PersonTest:
   import exercise.Ex.List.*
   import exercise.Ex.Person.*

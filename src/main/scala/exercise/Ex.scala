@@ -1,5 +1,7 @@
 package exercise
 
+import scala.annotation.tailrec
+
 object Ex extends App:
 
   enum List[A]:
@@ -40,6 +42,12 @@ object Ex extends App:
       case Cons(h, t) => max(t) match
         case Some(m) if m > h => Some(m)
         case _ => Some(h)
+
+    // 4
+    @tailrec
+    def foldLeft[A, B](l: List[A])(acc: B)(op: (B, A) => B ): B = l match
+      case Nil() => acc
+      case Cons(h, t) => foldLeft(t)(op(acc, h))(op)
 
   // 3
   enum Person:
