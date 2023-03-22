@@ -24,3 +24,6 @@ class ExTest:
   @Test def testEdgeCaseAppend() =
     assertEquals(list, append(list, Nil()))
     assertEquals(list, append(Nil(), list))
+
+  @Test def testFlatMap() =
+    assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), flatMap(list)(v => Cons(v + 1, Nil())))

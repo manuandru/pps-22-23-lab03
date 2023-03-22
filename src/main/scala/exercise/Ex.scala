@@ -14,3 +14,7 @@ object Ex extends App:
     def append[A](left: List[A], right: List[A]): List[A] = left match
       case Nil() => right
       case Cons(h, t) => Cons(h, append(t, right))
+
+    def flatMap[A, B](l: List[A])(f: A => List[B]): List[B] = l match
+      case Cons(h, t) => append(f(h), flatMap(t)(f))
+      case _ => Nil()
