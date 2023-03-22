@@ -32,3 +32,8 @@ class ExTest:
   @Test def testMap() =
     assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), map(list)(_ + 1))
     assertEquals(Cons("10", Cons("20", Cons("30", Nil()))), map(list)(_ + ""))
+
+  @Test def testFilter() =
+    assertEquals(Cons(20, Cons(30, Nil())), filter(list)(_ >= 20))
+    assertEquals(Cons(10, Cons(30, Nil())), filter(list)(_ != 20))
+    assertEquals(Nil(), filter(list)(_ < 0))
