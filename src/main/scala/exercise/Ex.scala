@@ -31,3 +31,12 @@ object Ex extends App:
         case true => Cons(e, Nil())
         case false => Nil()
       )
+
+    // 2
+    import u02.Optionals.Option
+    import u02.Optionals.Option.*
+    def max(l: List[Int]): Option[Int] = l match
+      case Nil() => None()
+      case Cons(h, t) => max(t) match
+        case Some(m) if m > h => Some(m)
+        case _ => Some(h)

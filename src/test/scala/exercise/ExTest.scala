@@ -37,3 +37,8 @@ class ExTest:
     assertEquals(Cons(20, Cons(30, Nil())), filter(list)(_ >= 20))
     assertEquals(Cons(10, Cons(30, Nil())), filter(list)(_ != 20))
     assertEquals(Nil(), filter(list)(_ < 0))
+
+  import u02.Optionals.Option.*
+  @Test def testMax() =
+    assertEquals(Some(25), max(Cons(10, Cons(25, Cons(20, Nil())))))
+    assertEquals(None(), max(Nil()))
