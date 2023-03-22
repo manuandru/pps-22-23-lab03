@@ -1,10 +1,10 @@
 package exercise
 
-import exercise.Ex.List.*
 import org.junit.*
 import org.junit.Assert.*
 
-class ExTest:
+class ListTest:
+  import exercise.Ex.List.*
 
   val list = Cons(10, Cons(20, Cons(30, Nil())))
 
@@ -27,7 +27,8 @@ class ExTest:
 
   @Test def testFlatMap() =
     assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), flatMap(list)(v => Cons(v + 1, Nil())))
-    assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(list)(v => Cons(v + 1, Cons(v + 2, Nil()))))
+    assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))),
+      flatMap(list)(v => Cons(v + 1, Cons(v + 2, Nil()))))
 
   @Test def testMap() =
     assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), map(list)(_ + 1))
@@ -43,14 +44,17 @@ class ExTest:
     assertEquals(Some(25), max(Cons(10, Cons(25, Cons(20, Nil())))))
     assertEquals(None(), max(Nil()))
 
+class PersonTest:
+  import exercise.Ex.List.*
   import exercise.Ex.Person.*
+
+  val student = Student("Manuel", 23)
+  val course = "PPS"
+  val teacher = Teacher("Mirko", course)
+
   @Test def testNoTeachers() =
     assertEquals(Nil(), findCourses(Nil()))
-    val student = Student("Manuel", 23)
     assertEquals(Nil(), findCourses(Cons(student, Nil())))
 
   @Test def testFindCourses() =
-    val student = Student("Manuel", 23)
-    val pps = "PPS"
-    val teacher = Teacher("Mirko", pps)
-    assertEquals(Cons(pps, Cons(pps, Nil())), findCourses(Cons(teacher, Cons(student, Cons(teacher, Nil())))))
+    assertEquals(Cons(course, Cons(course, Nil())), findCourses(Cons(teacher, Cons(student, Cons(teacher, Nil())))))
