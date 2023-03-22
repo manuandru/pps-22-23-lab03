@@ -42,3 +42,15 @@ class ExTest:
   @Test def testMax() =
     assertEquals(Some(25), max(Cons(10, Cons(25, Cons(20, Nil())))))
     assertEquals(None(), max(Nil()))
+
+  import exercise.Ex.Person.*
+  @Test def testNoTeachers() =
+    assertEquals(Nil(), findCourses(Nil()))
+    val student = Student("Manuel", 23)
+    assertEquals(Nil(), findCourses(Cons(student, Nil())))
+
+  @Test def testFindCourses() =
+    val student = Student("Manuel", 23)
+    val pps = "PPS"
+    val teacher = Teacher("Mirko", pps)
+    assertEquals(Cons(pps, Cons(pps, Nil())), findCourses(Cons(teacher, Cons(student, Cons(teacher, Nil())))))

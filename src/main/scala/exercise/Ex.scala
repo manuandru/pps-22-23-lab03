@@ -40,3 +40,16 @@ object Ex extends App:
       case Cons(h, t) => max(t) match
         case Some(m) if m > h => Some(m)
         case _ => Some(h)
+
+  // 3
+  enum Person:
+    case Student(name: String, year: Int)
+    case Teacher(name: String, course: String)
+
+  object Person:
+    import List.*
+    def findCourses(l: List[Person]): List[String] =
+      flatMap(l)(_ match
+        case Teacher(_, c) => Cons(c, Nil())
+        case _ => Nil()
+      )
