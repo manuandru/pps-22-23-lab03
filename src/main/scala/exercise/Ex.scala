@@ -21,3 +21,7 @@ object Ex extends App:
     def flatMap[A, B](l: List[A])(f: A => List[B]): List[B] = l match
       case Nil() => Nil()
       case Cons(h, t) => append(f(h), flatMap(t)(f))
+
+    // 1d
+    def map[A, B](l: List[A])(f: A => B): List[B] = flatMap(l)(e => Cons(f(e), Nil()))
+
