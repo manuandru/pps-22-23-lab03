@@ -47,9 +47,11 @@ class ListTest:
   val lst = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
   @Test def testFoldLeft() =
     assertEquals(-16, foldLeft(lst)(0)(_ - _))
+    assertEquals(-60, foldLeft(list)(0)(_ - _))
 
   @Test def testFoldRight() =
     assertEquals(-8, foldRight(lst)(0)(_ - _))
+    assertEquals(20, foldRight(list)(0)(_ - _))
 
 
 class PersonTest:
