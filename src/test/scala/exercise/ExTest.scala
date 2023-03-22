@@ -48,6 +48,10 @@ class ListTest:
   @Test def testFoldLeft() =
     assertEquals(-16, foldLeft(lst)(0)(_ - _))
 
+  @Test def testFoldRight() =
+    assertEquals(-8, foldRight(lst)(0)(_ - _))
+
+
 class PersonTest:
   import exercise.Ex.List.*
   import exercise.Ex.Person.*

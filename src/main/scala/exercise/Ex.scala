@@ -49,6 +49,11 @@ object Ex extends App:
       case Nil() => acc
       case Cons(h, t) => foldLeft(t)(op(acc, h))(op)
 
+    def foldRight[A, B](l: List[A])(acc: B)(op: (A, B) => B): B = l match
+      case Nil() => acc
+      case Cons(h, t) => op(h, foldRight(t)(acc)(op))
+
+
   // 3
   enum Person:
     case Student(name: String, year: Int)
