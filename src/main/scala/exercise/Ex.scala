@@ -107,5 +107,9 @@ object Ex extends App:
     def constant[A](a: A): Stream[A] =
       cons(a, constant(a))
 
+    // 7
+    def fibs(): Stream[Int] =
+      def fibs(n1: Int, n2: Int): Stream[Int] = cons(n1, fibs(n2, n1 + n2))
+      fibs(0, 1)
 
   end Stream

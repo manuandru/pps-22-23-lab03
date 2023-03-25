@@ -87,3 +87,7 @@ class StreamTest:
     val const = "x"
     assertEquals(Cons(const, Cons(const, Cons(const, Cons(const, Cons(const, Nil()))))),
       toList(take(constant(const))(5)))
+
+  @Test def testFibs() =
+    assertEquals(Cons(0, Cons(1, Cons(1, Cons(2, Cons(3, Cons(5, Cons(8, Cons(13, Nil())))))))),
+      toList(take(fibs())(8)))
