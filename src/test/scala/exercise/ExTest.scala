@@ -73,3 +73,12 @@ class PersonTest:
 
   @Test def testFindCourses() =
     assertEquals(Cons(course, Cons(course, Nil())), findCourses(Cons(teacher, Cons(student, Cons(teacher, Nil())))))
+
+
+class StreamTest:
+  import exercise.Ex.List.{Cons, Nil}
+  import exercise.Ex.Stream.*
+
+  @Test def testDrop() =
+    val s = take(iterate(0)(_ + 1))(10)
+    assertEquals(Cons(6, Cons(7, Cons(8, Cons(9, Nil())))), toList(drop(s)(6)))

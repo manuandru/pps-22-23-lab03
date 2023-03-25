@@ -75,3 +75,32 @@ object Ex extends App:
         case Teacher(_, c) => Cons(c, Nil())
         case _ => Nil()
       )
+
+  enum Stream[A]:
+    private case Empty()
+    private case Cons(head: () => A, tail: () => Stream[A])
+
+  object Stream:
+
+    def cons[A](hd: => A, tl: => Stream[A]): Stream[A] =
+      lazy val head = hd
+      lazy val tail = tl
+      Cons(() => head, () => tail)
+
+    def toList[A](stream: Stream[A]): List[A] = stream match
+      case Cons(h, t) => List.Cons(h(), toList(t()))
+      case _ => List.Nil()
+
+    def take[A](stream: Stream[A])(n: Int): Stream[A] = stream match
+      case Cons(head, tail) if n > 0 => cons(head(), take(tail())(n - 1))
+      case _ => Empty()
+
+    def iterate[A](init: => A)(next: A => A): Stream[A] =
+      cons(init, iterate(next(init))(next))
+
+    // 5
+    def drop[A](stream: Stream[A])(n: Int): Stream[A] = stream match
+      case Cons(_, t) if n > 0 => drop(t())(n - 1)
+      case _ => stream
+
+  end Stream
