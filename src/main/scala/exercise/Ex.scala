@@ -103,4 +103,9 @@ object Ex extends App:
       case Cons(_, t) if n > 0 => drop(t())(n - 1)
       case _ => stream
 
+    // 6
+    def constant[A](a: A): Stream[A] =
+      cons(a, constant(a))
+
+
   end Stream
