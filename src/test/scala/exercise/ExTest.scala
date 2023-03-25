@@ -82,6 +82,7 @@ class StreamTest:
   @Test def testDrop() =
     val s = take(iterate(0)(_ + 1))(10)
     assertEquals(Cons(6, Cons(7, Cons(8, Cons(9, Nil())))), toList(drop(s)(6)))
+    assertEquals(Nil(), toList(drop(s)(11)))
 
   @Test def testConstant() =
     val const = "x"
