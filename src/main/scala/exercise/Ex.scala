@@ -53,6 +53,15 @@ object Ex extends App:
       case Nil() => acc
       case Cons(h, t) => op(h, foldRight(t)(acc)(op))
 
+    // foldRight with reverse
+    def foldRight2[A, B](l: List[A])(acc: B)(op: (A, B) => B): B =
+      @tailrec
+      def reverse(l: List[A])(acc: List[A]): List[A] = l match
+        case Nil() => acc
+        case Cons(h, t) => reverse(t)(Cons(h, acc))
+      foldLeft(reverse(l)(Nil()))(acc)((a,b) => op(b,a))
+
+
 
   // 3
   enum Person:

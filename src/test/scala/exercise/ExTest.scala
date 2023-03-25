@@ -53,6 +53,11 @@ class ListTest:
     assertEquals(-8, foldRight(lst)(0)(_ - _))
     assertEquals(20, foldRight(list)(0)(_ - _))
 
+  // could avoid code duplication, maybe overkilled for 2 line of codes...
+  @Test def testFoldRight2() =
+    assertEquals(-8, foldRight2(lst)(0)(_ - _))
+    assertEquals(20, foldRight2(list)(0)(_ - _))
+
 
 class PersonTest:
   import exercise.Ex.List.*
